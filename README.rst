@@ -5,7 +5,8 @@ TxtWrpr
    :target: https://pypi.org/project/TxtWrpr/
    :alt: PyPI
 
-Read fixed length txt files into a structure to manipulate, enrich and export.
+Read fixed length txt files into a structure to manipulate, enrich, use or
+export.
 
 Installation
 ------------
