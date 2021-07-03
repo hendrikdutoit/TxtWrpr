@@ -1,8 +1,10 @@
 
-"""A wrapper for fixed column text files
+'''A wrapper for fixed column text files
 
-Read txt files into a structure for manipulation and export inother formats.
-"""
+This module copies a fixed column TXT file into a structure to manipulate,
+and enrich.  It can also be exported into a TXT file with a different
+structure than the original file.
+'''
 
 import logging
 from pathlib import Path
@@ -16,11 +18,11 @@ _path = Path(__file__)
 _name = _path.stem
 
 class TxtWrpr:
-    '''Wrpr for TXT Files
+    '''A wrapper for fixed column text files
 
-    This module copies a fixed column txt file into a structure to manipulate.
-    It can be exported intop a TXT fiel with a different format or to a CSV
-    file.
+    This module copies a fixed column TXT file into a structure to manipulate,
+    and enrich.  It can also be exported into a TXT file with a different
+    structure than the original file.
     '''
     def __init__( self, p_parent_logger_name,
                   p_key_idx,
