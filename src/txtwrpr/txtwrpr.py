@@ -1,7 +1,7 @@
 
 '''A wrapper for fixed column text files
 
-This module copies a fixed column TXT file into a structure to manipulate,
+This module copies a fixed column TXT file into a dictionary to manipulate,
 and enrich.  It can also be exported into a TXT file with a different
 structure than the original file.
 '''
@@ -20,9 +20,10 @@ _name = _path.stem
 class TxtWrpr:
     '''A wrapper for fixed column text files
 
-    This module copies a fixed column TXT file into a structure to manipulate,
-    and enrich.  It can also be exported into a TXT file with a different
-    structure than the original file.
+    This module copies a fixed column TXT file into a dictionary structure
+    to manipulate and enrich.  It can also be exported into a TXT file with
+    a different structure than the original file.  Each row of the TXT file
+    must have at least one unique field that can be used as a key.
     '''
     def __init__( self, p_parent_logger_name,
                   p_key_idx,
@@ -36,13 +37,36 @@ class TxtWrpr:
 
         Parameters
         ----------
+        p_parent_logger_name
+            Logger name of the caller.  Assigns a logger name to the logger
+            in the <p_parent_logger_name>.<_name> format.
+        p_key_idx
+            Indicates the column number used as a key for the dictionary
+            starting at 0.
+        p_src_field_def
+            Definition of the source file presented in a list.
+            [[FieldName1,ColStart1,ColEnd1],
+             [FieldName2,ColStart2,ColEnd2],
+             ....
+             [FieldNameN,ColStartN,ColEndN]]
+             where:
+             FieldName = Name of the field in the header
+             ColStart = Start column
+             ColEnd = End column of the field
+        p_src = None
+            List or a file path.
+        p_has_header = True
+            Indicate if the source has a header as the first record.
+        p_verbose = False
+            Print feed back to the screen
 
         Returns
         -------
+        None
 
         Examples
         --------
-        # No proper doctest (<<<) because it is os dependent
+        See example in do_example
 
         '''
         self.logger_name = '{}.{}'.format( p_parent_logger_name, _name )
@@ -66,7 +90,25 @@ class TxtWrpr:
 
 
     def assign_src(self, p_src):
-        '''Analise the data source and assign corretly'''
+        '''Assign src_data to the source data. It accept either a list or
+        a path to a file. If the source is a list, the src_path is set
+        "list" or alternatively the path to the file is assighend to src_pth.
+
+        Parameters
+        ----------
+        p_src
+            Source data for parsing
+
+        Returns
+        -------
+        src_data
+            A list or Path to the source data
+
+        Examples
+        --------
+        See example in do_example
+
+        '''
         self.success = True
         if isinstance(p_src, list):
             self.src_data = p_src
@@ -85,17 +127,22 @@ class TxtWrpr:
 
 
     def read_txt( self, p_src = None, p_verbose = False ):
-        '''Import fixed width column text file into a list
+        '''Process the fixed width column text file into a dictionary
 
         Parameters
         ----------
+        p_src = None
+            A list or Path to the source data
+
+        p_verbose = False
+            Print feed back to the screen
 
         Returns
         -------
 
         Examples
         --------
-        # No proper doctest (<<<) because it is os dependent
+        See example in do_example
 
         '''
         self.assign_src(p_src)
@@ -129,15 +176,37 @@ class TxtWrpr:
 
         Parameters
         ----------
+        p_exp_pth
+            Path to export the file to
+        p_exp_field_def
+            Definition of the export file presented in a list.
+            [[FieldName1,ColStart1,ColEnd1,StaticText],
+             [FieldName2,ColStart2,ColEnd2,StaticText],
+             ....
+             [FieldNameN,ColStartN,ColEndN,StaticText]]
+
+             where:
+                FieldName = Name of the field in the header
+                ColStart = Start column
+                ColEnd = End column of the field
+                If FieldName is not an existing field, this text will be
+                    inserted in this column (enrichment)
+        p_exp_header = True
+            Write the header to the TXT file.
+        p_verbose = False
+            Print feed back to the screen
 
         Returns
         -------
+        str
+            Exported data in string format.
 
         Examples
         --------
-        # No proper doctest (<<<) because it is os dependent
+        See example in do_example
 
         '''
+
         self.exp_pth = p_exp_pth
         self.exp_field_def = p_exp_field_def
         self.exp_header = p_exp_header

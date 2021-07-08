@@ -89,7 +89,7 @@ def test_write_txt_add_fixed_field():
     assert isinstance(t_wrpr.src_pth, type(list))
     assert t_wrpr.parsed_data == PARSED_DATA_01
     assert t_wrpr.success
-    assert t_wrpr.verbose 5067 275
+    assert t_wrpr.verbose
 
     t_wrpr = TxtWrpr(
         _name,
