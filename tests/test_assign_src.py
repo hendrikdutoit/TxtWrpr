@@ -1,8 +1,8 @@
-
 '''Testing read_assign_src()'''
 
 # import configparser
 from pathlib import Path
+
 # import sys
 # import apputils
 # import tempfile
@@ -15,7 +15,7 @@ _path = Path(__file__)
 _name = _path.stem
 _VERSION = '0.0.1'
 
-b_tls = beetools.Archiver( _name, _VERSION, __doc__, Path( _path))
+b_tls = beetools.Archiver(_name, _VERSION, __doc__, Path(_path))
 
 
 def test_read_assign_src_simple():
@@ -25,8 +25,8 @@ def test_read_assign_src_simple():
         0,
         SRC_FIELD_DEF_01,
         # p_src = SOURCE_DATA,
-        p_has_header = True,
-        p_verbose = True
+        p_has_header=True,
+        p_verbose=True,
     )
     assert t_wrpr.src_field_def == SRC_FIELD_DEF_01
     assert t_wrpr.has_header

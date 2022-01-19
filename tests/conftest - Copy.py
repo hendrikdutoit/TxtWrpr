@@ -40,7 +40,6 @@ SRC_DATA_02 = [
     '8700249        Jere,Daniel                                                  Gauteng                M2384 1986\n',
 ]
 
-SRC_HEADER = ['OrgMemberId', 'SurnameName', 'Fed', 'Gender', 'Std', 'BirthYear']
 
 PARSED_DATA_01 = {
     '11000120': {

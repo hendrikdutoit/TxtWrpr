@@ -1,8 +1,8 @@
-
 '''Testing __init__()'''
 
 # import configparser
 from pathlib import Path
+
 # import sys
 # import apputils
 import tempfile
@@ -15,7 +15,7 @@ _path = Path(__file__)
 _name = _path.stem
 _VERSION = '0.0.1'
 
-b_tls = beetools.Archiver( _name, _VERSION, __doc__, Path( _path))
+b_tls = beetools.Archiver(_name, _VERSION, __doc__, Path(_path))
 
 
 def test__init__simple():
@@ -25,8 +25,8 @@ def test__init__simple():
         0,
         SRC_FIELD_DEF_01,
         # p_src = SOURCE_DATA,
-        p_has_header = True,
-        p_verbose = True
+        p_has_header=True,
+        p_verbose=True,
     )
     assert not t_wrpr.exp_data
     assert not t_wrpr.exp_field_def
@@ -41,15 +41,11 @@ def test__init__simple():
     assert t_wrpr.success
     assert t_wrpr.verbose
 
+
 def test__init__list():
     '''Testing __init__list()'''
     t_wrpr = TxtWrpr(
-        _name,
-        0,
-        SRC_FIELD_DEF_01,
-        p_src = SRC_DATA_01,
-        p_has_header = True,
-        p_verbose = True
+        _name, 0, SRC_FIELD_DEF_01, p_src=SRC_DATA_01, p_has_header=True, p_verbose=True
     )
     assert not t_wrpr.exp_data
     assert not t_wrpr.exp_field_def
@@ -64,6 +60,7 @@ def test__init__list():
     assert t_wrpr.success
     assert t_wrpr.verbose
 
+
 def test__init__file():
     '''Testing __init__file()'''
     data_fldr = Path(tempfile.TemporaryDirectory().name)
@@ -71,12 +68,7 @@ def test__init__file():
     src_pth = data_fldr / 'txtFile01.txt'
     create_test_file(src_pth)
     t_wrpr = TxtWrpr(
-        _name,
-        0,
-        SRC_FIELD_DEF_01,
-        p_src = src_pth,
-        p_has_header = True,
-        p_verbose = True
+        _name, 0, SRC_FIELD_DEF_01, p_src=src_pth, p_has_header=True, p_verbose=True
     )
     beetools.rm_tree(data_fldr)
     assert not t_wrpr.exp_data
@@ -91,6 +83,7 @@ def test__init__file():
     assert t_wrpr.parsed_data == PARSED_DATA_01
     assert t_wrpr.success
     assert t_wrpr.verbose
+
 
 test__init__simple()
 test__init__list()

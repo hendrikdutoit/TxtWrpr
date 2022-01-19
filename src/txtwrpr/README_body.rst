@@ -1,7 +1,3 @@
-A wrapper for fixed column text files
-
-    This module copies a fixed column TXT file into a dictionary to manipulate, and enrich. It can also be exported into a TXT file with a different structure than the original file.
-
 =======
 Testing
 =======
