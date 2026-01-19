@@ -5,7 +5,6 @@ import beetools
 from txtwrpr import TxtWrpr
 from conftest import EXPORT_LIST_01, SRC_DATA_01, SRC_FIELD_DEF_01
 
-
 _path = Path(__file__)
 _name = _path.stem
 _VERSION = '0.0.1'
