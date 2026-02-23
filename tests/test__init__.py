@@ -10,7 +10,6 @@ import beetools
 from txtwrpr import TxtWrpr
 from conftest import SRC_DATA_01, PARSED_DATA_01, SRC_FIELD_DEF_01, create_test_file
 
-
 _path = Path(__file__)
 _name = _path.stem
 _VERSION = '0.0.1'

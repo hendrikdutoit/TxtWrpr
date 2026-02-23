@@ -17,7 +17,6 @@ from conftest import (
     SRC_FIELD_DEF_02,
 )
 
-
 _path = Path(__file__)
 _name = _path.stem
 _VERSION = '0.0.1'
